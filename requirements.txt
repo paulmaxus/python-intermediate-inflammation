@@ -7,6 +7,7 @@ charset-normalizer==3.3.2
 click==8.1.7
 colorama==0.4.6
 contourpy==1.2.0
+coverage==7.3.2
 cycler==0.12.1
 dill==0.3.7
 distlib==0.3.7
@@ -36,6 +37,7 @@ pydantic_core==2.14.5
 pylint==3.0.2
 pyparsing==3.1.1
 pytest==7.4.3
+pytest-cov==4.1.0
 python-dateutil==2.8.2
 pytz==2023.3.post1
 requests==2.31.0
