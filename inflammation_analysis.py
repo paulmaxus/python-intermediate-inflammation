@@ -23,6 +23,7 @@ def main(arguments):
             "average": models.daily_mean(inflammation_data),
             "max": models.daily_max(inflammation_data),
             "min": models.daily_min(inflammation_data),
+            "std": models.daily_std(inflammation_data),
         }
 
         views.visualize(view_data)
@@ -35,10 +36,10 @@ if __name__ == "__main__":
 
     parser.add_argument(
         "infiles",
-        narguments="+",
+        nargs="+",
         help="Input CSV(s) containing inflammation series for each patient",
     )
 
-    args = parser.parse_arguments()
+    args = parser.parse_args()
 
     main(args)
