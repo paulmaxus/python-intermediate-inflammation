@@ -44,3 +44,55 @@ def daily_min(data):
     :return: 1D Numpy array of minimum values for each day.
     """
     return np.min(data, axis=0)
+
+
+def daily_std(data):
+    """Calculate the daily standard deviation of a 2D inflammation data array.
+    
+    :param data: 2D Numpy array containing inflammation data.
+    :return: 1D Numpy array of standard deviations for each day.
+    """
+    return np.std(data, axis=0)
+
+
+class Person:
+    """Class representing a person."""
+    def __init__(self, name):
+        self.name = name
+
+class Observation:
+    """Class representing a single observation."""
+    def __init__(self, value, day):
+        self.value = value
+        self.day = day
+
+class Patient(Person):
+    """Class representing a single patient."""
+    def __init__(self, name):
+        super().__init__(name)
+        self.observations = []
+    
+    def add_observation(self, value, day=None):
+        """Add an observation to the patient's record."""
+        if day is None:
+            try:
+                day = self.observations[-1].day + 1
+            except IndexError:
+                day = 0
+        observation = Observation(value, day)
+        self.observations.append(observation)
+        return observation
+
+class Doctor(Person):
+    """Class representing a doctor."""
+    def __init__(self, name):
+        super().__init__(name)
+        self.patients = set()
+
+    def add_patient(self, patient):
+        """Add a patient to the doctor's list of patients."""
+        self.patients.add(patient)
+
+    def remove_patient(self, patient):
+        """Remove a patient from the doctor's list of patients."""
+        self.patients.remove(patient)
