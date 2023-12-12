@@ -44,3 +44,22 @@ def daily_min(data):
     :return: 1D Numpy array of minimum values for each day.
     """
     return np.min(data, axis=0)
+
+
+def daily_std(data):
+    """Calculate the daily standard deviation of a 2D inflammation data array.
+    
+    :param data: 2D Numpy array containing inflammation data.
+    :return: 1D Numpy array of standard deviations for each day.
+    """
+    return np.std(data, axis=0)
+
+def daily_above_threshold(row_number, data, threshold):
+    """Calculate the days above threshold of a 1D inflammation data array.
+
+    :param row_number: Row number of patient data to calculate.
+    :param data: 2D Numpy array containing inflammation data.
+    :param threshold: Threshold to compare against.
+    :return: 1D Numpy array of days above threshold.
+    """
+    return list(map(lambda x: x > threshold, data[row_number]))

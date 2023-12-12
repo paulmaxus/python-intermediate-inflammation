@@ -63,3 +63,16 @@ def test_daily_min_string():
 
     with pytest.raises(TypeError):
         error_expected = daily_min([['Hello', 'there'], ['General', 'Kenobi']])
+
+@pytest.mark.parametrize(
+    "test, expected",
+    [
+        ([[0, 0]], [False, False]),
+        ([[1, 1]], [True, True]),
+        ([[0, 2]], [False, True])
+    ],
+)
+def test_daily_above_threshold(test, expected):
+    """Test that daily_above_threshold works for simple cases."""
+    from inflammation.models import daily_above_threshold
+    npt.assert_array_equal(daily_above_threshold(0, test, 0), expected)
